@@ -226,20 +226,25 @@ Again" for "Inconclusive".**
 
    
 ```sql
-      WITH minbilling AS
-      (SELECT 
-             first_name,
-             last_name,
-             billing_amount
-      FROM healthanalysis
-      WHERE test_result='Normal'
-      ORDER BY billing_amount ASC 
-      LIMIT 5)
-      
-      SELECT 
-            first_name,
-            last_name 
-      FROM minbilling;
+      WITH RankedPatients AS
+    (
+    SELECT 
+        first_name AS PatientFirstName,
+        last_name AS PatientLastName,
+        billing_amount AS BillingAmount,
+        ROW_NUMBER() OVER (ORDER BY billing_amount ASC) AS RowRank
+    FROM healthanalysis
+    WHERE test_result = 'Normal'
+   )
+    SELECT 
+        PatientFirstName,
+        PatientLastName,
+        BillingAmount
+    FROM 
+    RankedPatients
+    WHERE 
+    RowRank <= 5
+    ORDER BY RowRank;
 ```
 
    **9.** **Write a SQL query to count the number of patients for each hospital, broken down by the years 2020, 2021, and 2022.**
