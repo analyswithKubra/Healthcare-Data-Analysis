@@ -6,7 +6,6 @@
 **Project Overview**
 
 **Project Title:** Healthcare Data Analysis  
-**Level:** Beginner  
 **Database:** healthcare_dataset.csv  
 
 This project demonstrates SQL skills and techniques commonly used by data analysts to create, clean, explore, and analyze a healthcare dataset. It involves setting up a database, performing exploratory data analysis (EDA), and drawing insights from healthcare data. The project is ideal for beginners who want to develop solid SQL skills in data analysis.
@@ -174,7 +173,7 @@ This project demonstrates SQL skills and techniques commonly used by data analys
 ```sql
       WITH cteRowNum AS (
       SELECT  
-		        insurance_provider,
+            insurance_provider,
             billing_amount,
 	    ROW_NUMBER() OVER(PARTITION BY insurance_provider 
       ORDER BY billing_amount DESC) AS RowNum
