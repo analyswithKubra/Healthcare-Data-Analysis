@@ -188,15 +188,21 @@ This project demonstrates SQL skills and techniques commonly used by data analys
       ORDER BY billing_amount DESC;
 ```
 
-   **6.** **Write a SQL query to get the first and last names of patients, along with the total number of patients, for each prescribed medication.**
+   **6.** **Write a SQL query to get the first and last names of patients, along with a list of all medications they are prescribed (concatenated), and the total count of distinct medications for each patient.**
 
    
 ```sql
       SELECT 
-           medication,
-           COUNT(*) as total_medication_given
-      FROM healthanalysis
-      GROUP BY medication ORDER BY total_medication_given DESC;
+            first_name,
+            last_name,
+            GROUP_CONCAT(DISTINCT medication ORDER BY medication) AS medications,
+            COUNT(DISTINCT medication) AS total_medications
+     FROM  healthanalysis
+     GROUP BY 
+             first_name,
+             last_name
+    ORDER BY 
+    first_name, last_name;
 ```
 
    **7.** **Write a SQL query to count test results by category. Return the results as "Healthy" for "Normal", "Unhealthy" for "Abnormal", and "Test 
