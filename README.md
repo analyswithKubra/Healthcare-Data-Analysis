@@ -46,22 +46,22 @@ This project demonstrates SQL skills and techniques commonly used by data analys
 
           CREATE TABLE healthanalysis 
           (ID INT NOT NULL  AUTO_INCREMENT PRIMARY KEY,
-          first_name         VARCHAR(255),
-	      last_name          VARCHAR(255),
+          first_name         VARCHAR(50),
+	      last_name          VARCHAR(50),
 		age                INT,
-		gender             VARCHAR (255),
-          blood_type         VARCHAR(255),
-          medical_condition  VARCHAR(255),
+		gender             VARCHAR (10),
+          blood_type         VARCHAR(10),
+          medical_condition  VARCHAR(50),
           dateofadmission    DATE,
-          doctor             VARCHAR(255),
-          hospital           VARCHAR(255),
-          insurance_provider VARCHAR(255),
+          doctor             VARCHAR(50),
+          hospital           VARCHAR(50),
+          insurance_provider VARCHAR(50),
           billing_amount     DECIMAL (10,2),
           room_number        INT,
-          admission_type     VARCHAR(255),
+          admission_type     VARCHAR(50),
           discharge_date     DATE,
-          medication         VARCHAR(255),
-          test_result        VARCHAR(255));
+          medication         VARCHAR(50),
+          test_result        VARCHAR(20);
 
 ```
     
